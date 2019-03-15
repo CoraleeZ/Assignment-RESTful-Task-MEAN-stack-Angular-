@@ -8,16 +8,9 @@ export class HttpService {
 
   constructor(private _http: HttpClient) {
     this.getAllTasks();
-    this.getOneTasks();
   }
   getAllTasks(){
-    // our http response is an Observable, store it in a variable
-       let tempObservable = this._http.get('/api/tasks');
-    // subscribe to the Observable and provide the code we would like to do with our data from the response
-       tempObservable.subscribe(data => console.log("Got all tasks!", data));
+      return this._http.get('/api/tasks');
     };
-    getOneTasks(){
-      let tempObservable = this._http.get('/api/tasks/:id');
-      tempObservable.subscribe(data => console.log("Got one tasks!", data));
-    };
+    
 }
