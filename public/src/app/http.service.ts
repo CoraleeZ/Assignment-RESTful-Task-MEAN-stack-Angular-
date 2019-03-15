@@ -12,5 +12,8 @@ export class HttpService {
   getAllTasks(){
       return this._http.get('/api/tasks');
     };
+  getOneTasks(id:any){
+      return this._http.get('/api/tasks/'+id);
+    };
     
 }

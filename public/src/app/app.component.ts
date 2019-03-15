@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import { HttpService } from './http.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,16 +10,19 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit{
   title = 'public';
-  tasks = [];
-  constructor(private _httpService: HttpService){}
+  heros:any=[];
+    
+  constructor(private _allHero: HttpService){}
+
   ngOnInit(){
     this.getTasksFromService();
   };
+
   getTasksFromService(){
-    let tempObservable=this._httpService.getAllTasks();
+    let tempObservable=this._allHero.getAllTasks();
     tempObservable.subscribe(data =>{
-    console.log("Got all tasks!", data);
-    this.tasks = data['tasks'];
-  }); 
-  }
+      console.log(data);
+      this.heros=data;
+    });
+  };
 }
